@@ -1,0 +1,16 @@
+# Temel Veri İşleme
+pandas==2.2.1
+numpy==1.26.4
+matplotlib==3.8.3
+
+# Makine Öğrenmesi & Derin Öğrenme (N-beats)
+torch==2.2.1
+transformers>=4.39.1
+accelerate>=0.34.0
+
+# Zaman Serisi Kütüphaneleri (Arima)
+neuralforecast==1.7.0
+statsforecast==1.7.3
+
+# Amazon Chronos (Time Series Foundation Model)
+git+https://github.com/amazon-science/chronos-forecasting.git
