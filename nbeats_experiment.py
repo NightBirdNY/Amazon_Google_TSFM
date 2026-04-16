@@ -8,7 +8,7 @@ from neuralforecast import NeuralForecast
 from neuralforecast.models import NBEATS
 from utilsforecast.losses import mae, rmse
 
-print("🚀 N-BEATS Eğitimi Başlıyor (Fanlar dönmeye hazırlanıyor...)")
+print("N-BEATS Eğitimi Başlıyor (Fanlar dönmeye hazırlanıyor...)")
 start_time = time.time()
 
 # 1. Veriyi Yükle
@@ -17,8 +17,6 @@ df['ds'] = pd.to_datetime(df['ds'])
 df = df.sort_values(['unique_id', 'ds']).reset_index(drop=True)
 
 horizon = 24  # 24 saatlik tahmin ufku
-# M5'te öğrendiğimiz ders: Çok eskiye bakmak gürültüyü artırır.
-# 24 saat tahmini için 3 günlük (72 saat) bakış penceresi idealdir.
 lookback = 3 * horizon
 
 # 2. N-BEATS Modelini Tanımla
@@ -33,15 +31,14 @@ model = NBEATS(
 nf = NeuralForecast(models=[model], freq='H')
 
 # 3. Model Eğitimi (Cross-Validation / Test ayrımı)
-print("🧠 Model geçmişi inceliyor ve kalıpları öğreniyor (Training)...")
-# Y_df tahmini üretiyor, bu sırada verinin son 24 saatini (test setini) de tahmin ediyor
+print("Model geçmişi inceliyor ve kalıpları öğreniyor...")
 crossval_df = nf.cross_validation(df=df, n_windows=1)
 
 end_time = time.time()
 training_time = end_time - start_time
-print(f"✅ Eğitim ve Tahmin tamamlandı! Süre: {training_time:.2f} saniye.")
+print(f"Eğitim ve Tahmin tamamlandı! Süre: {training_time:.2f} saniye.")
 
-# 4. Metrikleri Hesapla (Chronos ile kıyaslamak için aynı kurallar)
+# 4. Metrikleri Hesapla
 # N-BEATS sonuçları crossval_df içinde geliyor
 crossval_df = crossval_df.reset_index()
 
@@ -60,7 +57,7 @@ metrics_df.to_csv('results/nbeats_metrics.csv', index=False)
 crossval_df.rename(columns={'NBEATS': 'N-BEATS'}, inplace=True)
 crossval_df[['unique_id', 'ds', 'y', 'N-BEATS']].to_csv('results/nbeats_predictions.csv', index=False)
 
-# 5. Görselleştirme (İlk kategori üzerinden kalite kontrol)
+# 5. Görselleştirme
 first_uid = crossval_df['unique_id'].unique()[0]
 plot_test = crossval_df[crossval_df['unique_id'] == first_uid]
 

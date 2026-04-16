@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-print("🧪 Final Analiz Raporu Hazırlanıyor...")
+print("Final Analiz Raporu Hazırlanıyor...")
 
 # 1. Mevcut Tahminleri Yükle
 try:
@@ -16,17 +16,17 @@ try:
     final_df = final_df.merge(n_pred[['unique_id', 'ds', 'N-BEATS']], on=['unique_id', 'ds'], how='left')
     final_df = final_df.merge(b_pred[['unique_id', 'ds', 'SeasonalNaive', 'Naive']], on=['unique_id', 'ds'], how='left')
 
-    print("✅ Tahmin verileri birleştirildi.")
+    print("Tahmin verileri birleştirildi.")
 except Exception as e:
-    print("❌ Hata: Bazı CSV dosyaları eksik! results/ klasörünü kontrol et.", e)
+    print("Hata: Bazı CSV dosyaları eksik! results/ klasörünü kontrol et.", e)
 
-# 2. Performans Özeti (Hız ve Hata Tablosu)
+# 2. Performans Özeti
 c_m = pd.read_csv('results/chronos_metrics.csv')
 n_m = pd.read_csv('results/nbeats_metrics.csv')
 b_m = pd.read_csv('results/baseline_metrics.csv')
 
 comparison = pd.DataFrame({
-    'Model': ['N-BEATS (Eğitilmiş)', 'SeasonalNaive', 'Chronos (Zero-Shot)', 'Naive (Düz)'],
+    'Model': ['N-BEATS', 'SeasonalNaive', 'Chronos', 'Naive '],
     'WAPE (%)': [
         round(n_m['WAPE'].iloc[0] * 100, 2),
         round(b_m[b_m['Model'] == 'SeasonalNaive']['WAPE'].iloc[0] * 100, 2),
@@ -34,7 +34,7 @@ comparison = pd.DataFrame({
         round(b_m[b_m['Model'] == 'Naive']['WAPE'].iloc[0] * 100, 2)
     ],
     'Çalışma Süresi': ['17.8 sn (Eğitim)', '0.7 sn', '5.4 sn (Çıkarım)', '0.7 sn'],
-    'Donanım': ['GPU (1660 Ti)', 'CPU', 'GPU (1660 Ti)', 'CPU']
+
 })
 
 # 3. Sonuçları Kaydet
@@ -42,12 +42,12 @@ os.makedirs('results', exist_ok=True)
 comparison.to_csv('results/RAPOR_FINAL_TABLO.csv', index=False)
 
 print("\n" + "=" * 70)
-print("🎓 VİZE PROJESİ - FİNAL KARŞILAŞTIRMA TABLOSU")
+print("FİNAL KARŞILAŞTIRMA TABLOSU")
 print("=" * 70)
 print(comparison.to_string(index=False))
 print("=" * 70)
 
-# 4. Final Grafiği (En İyi 3 Modelin Kapışması)
+# 4. Final Grafiği
 first_uid = final_df['unique_id'].unique()[0]
 subset = final_df[final_df['unique_id'] == first_uid].tail(24)
 
@@ -62,7 +62,6 @@ plt.legend()
 plt.grid(True, alpha=0.2)
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig('results/FINAL_VIZE_GRAFIGI.png')
+plt.savefig('results/FINAL_GRAFIGI.png')
 
-print("\n🚀 İşlem bitti! 'results/RAPOR_FINAL_TABLO.csv' ve 'FINAL_VIZE_GRAFIGI.png' hazır.")
-print("Artık Pycharm'ı kapatıp raporu yazmaya başlayabilirsin Taha. Eline sağlık!")
+print("\nİşlem bitti! 'results/RAPOR_FINAL_TABLO.csv' ve 'FINAL_VIZE_GRAFIGI.png' hazır.")

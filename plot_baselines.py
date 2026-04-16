@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-print("📊 Baseline grafikleri oluşturuluyor...")
+print("Baseline grafikleri oluşturuluyor...")
 
 # 1. Verileri Yükle
 try:
@@ -28,7 +28,7 @@ try:
              linewidth=2.5)
     plt.plot(test_data['ds'], test_data['Naive'], color='orange', label='Naive (%52.0 Hata)', linewidth=1.5)
 
-    plt.title(f"Baseline (Temel) Modellerin Tahmin Performansı (ID: {first_id})", fontsize=14)
+    plt.title(f"Baseline Modellerin Tahmin Performansı (ID: {first_id})", fontsize=14)
     plt.xlabel("Zaman (Saatlik)")
     plt.ylabel("Yorum Sayısı")
     plt.legend()
@@ -37,7 +37,7 @@ try:
 
     # Kaydet
     plt.savefig('results/baselines_forecast_plot.png', dpi=300)
-    print("✅ 'results/baselines_forecast_plot.png' başarıyla kaydedildi!")
+    print("'results/baselines_forecast_plot.png' başarıyla kaydedildi!")
 
 except Exception as e:
-    print(f"❌ Hata oluştu: {e}")
+    print(f"Hata oluştu: {e}")
