@@ -15,6 +15,10 @@ Kullanılan veri seti **UCI Amazon Product and Google Locations Reviews** saatli
 Deneyler, CUDA hızlandırması ile yerel bir Linux ortamında **NVIDIA GTX 1660 Ti (6GB VRAM)** kullanılarak gerçekleştirilmiştir. Chronos'un çıkarım aşamasında OOM (Out of Memory) hatalarını önlemek için *batching* (`batch_size=32`) ve *context limiting* (512 saat) stratejileri uygulanmıştır.
 
 Kullanılan temel kütüphaneler (`NeuralForecast`, `StatsForecast`, `PyTorch`) ve diğer gereksinimleri yüklemek için:
+```bash
+pip install -r requirements.txt
+```
+
 ## D. Ana Bulgular ve Model Performansları
 
 Modellerin 24 saatlik tahmin ufku üzerindeki noktasal hata metrikleri (Accuracy) aşağıda sunulmuştur:
@@ -44,5 +48,3 @@ Deneyleri tekrarlamak veya metrikleri incelemek için sırasıyla şu adımları
 2. `get_all_rmse.py` 
 3. `calibration_metrics.py` 
 4. `plot_baselines.py` 
-```bash
-pip install -r requirements.txt
