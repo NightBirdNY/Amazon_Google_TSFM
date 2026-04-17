@@ -8,7 +8,7 @@ from neuralforecast import NeuralForecast
 from neuralforecast.models import NBEATS
 from utilsforecast.losses import mae, rmse
 
-print("N-BEATS Eğitimi Başlıyor (Fanlar dönmeye hazırlanıyor...)")
+print("N-BEATS Eğitimi Başlıyor...)")
 start_time = time.time()
 
 # 1. Veriyi Yükle
@@ -24,14 +24,14 @@ model = NBEATS(
     h=horizon,
     input_size=lookback,
     stack_types=['trend', 'seasonality'],
-    max_steps=500, # Vize için hızlı eğitim.
+    max_steps=500, # Hızlı eğitim.
     scaler_type='standard',
 )
 
 nf = NeuralForecast(models=[model], freq='H')
 
 # 3. Model Eğitimi (Cross-Validation / Test ayrımı)
-print("Model geçmişi inceliyor ve kalıpları öğreniyor...")
+print("Model öğreniyor...")
 crossval_df = nf.cross_validation(df=df, n_windows=1)
 
 end_time = time.time()
@@ -74,6 +74,6 @@ plt.grid(True, alpha=0.3)
 plt.savefig('results/nbeats_forecast_plot.png')
 
 print("="*50)
-print(f"📊 N-BEATS Ortalama MAE: {metrics_dict['MAE'][0]:.4f}")
-print(f"📉 N-BEATS WAPE: {metrics_dict['WAPE'][0]:.4f}")
+print(f"[INFO] N-BEATS Ortalama MAE: {metrics_dict['MAE'][0]:.4f}")
+print(f"[INFO] N-BEATS WAPE: {metrics_dict['WAPE'][0]:.4f}")
 print("="*50)

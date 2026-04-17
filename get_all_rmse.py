@@ -16,10 +16,10 @@ try:
 
 
     # 3. Tüm modeller için hesapla ve ekrana yazdır
-    print(f"📊 N-BEATS RMSE       : {calculate_rmse(n_pred['y'], n_pred['N-BEATS']):.4f}")
-    print(f"📊 Seasonal Naive RMSE: {calculate_rmse(b_pred['y'], b_pred['SeasonalNaive']):.4f}")
-    print(f"📊 Chronos RMSE       : {calculate_rmse(c_pred['y'], c_pred['Chronos']):.4f}")
-    print(f"📊 Naive (Düz) RMSE   : {calculate_rmse(b_pred['y'], b_pred['Naive']):.4f}")
+    print(f"[INFO] N-BEATS RMSE       : {calculate_rmse(n_pred['y'], n_pred['N-BEATS']):.4f}")
+    print(f"[INFO] Seasonal Naive RMSE: {calculate_rmse(b_pred['y'], b_pred['SeasonalNaive']):.4f}")
+    print(f"[INFO] Chronos RMSE       : {calculate_rmse(c_pred['y'], c_pred['Chronos']):.4f}")
+    print(f"[INFO] Naive (Düz) RMSE   : {calculate_rmse(b_pred['y'], b_pred['Naive']):.4f}")
 
 except Exception as e:
     print(f"Dosyalar okunurken hata oluştu: {e}")

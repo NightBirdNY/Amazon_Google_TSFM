@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3993552a-5cfc-4185-8a60-52e8befe63eb" name="Changes" comment="TSFM Çalışması">
-      <change afterPath="$PROJECT_DIR$/calibration_metrics.py" afterDir="false" />
+    <list default="true" id="3993552a-5cfc-4185-8a60-52e8befe63eb" name="Changes" comment="PCE/SIW Coverage metrics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibration_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibration_metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chronos_zeroshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/chronos_zeroshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_all_rmse.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_all_rmse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbeats_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/nbeats_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot_baselines.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_baselines.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +90,7 @@
       <workItem from="1776257793924" duration="1000" />
       <workItem from="1776261830232" duration="1479000" />
       <workItem from="1776346241268" duration="2810000" />
-      <workItem from="1776433012027" duration="596000" />
+      <workItem from="1776433012027" duration="2295000" />
     </task>
     <task id="LOCAL-00001" summary="TSFM">
       <option name="closed" value="true" />
@@ -102,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776353109062</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="PCE/SIW Coverage metrics">
+      <option name="closed" value="true" />
+      <created>1776433900023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776433900024</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +125,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="TSFM" />
     <MESSAGE value="TSFM Çalışması" />
-    <option name="LAST_COMMIT_MESSAGE" value="TSFM Çalışması" />
+    <MESSAGE value="PCE/SIW Coverage metrics" />
+    <option name="LAST_COMMIT_MESSAGE" value="PCE/SIW Coverage metrics" />
   </component>
 </project>

@@ -25,7 +25,7 @@ test_df = df[df['reverse_rank'] < horizon].drop(columns=['reverse_rank']).reset_
 
 # 3. Chronos Modelini Yükle
 model_name = 'amazon/chronos-t5-tiny'
-print(f"🔮 {model_name} belleğe yükleniyor...")
+print(f"{model_name} belleğe yükleniyor...")
 
 pipeline = ChronosPipeline.from_pretrained(
     model_name,
@@ -46,17 +46,17 @@ for uid in unique_ids:
     context_tensors.append(torch.tensor(series_data, dtype=torch.float32))
 
 # 5. Zero-Shot Çıkarım
-print("⚙️ Gelecek tahmin ediliyor (GPU dostu gruplama ile)...")
+print("Tahmin ediliyor...")
 start_inference = time.time()
 
 batch_size = 32
 all_forecasts = []
 
 for i in range(0, len(context_tensors), batch_size):
-    print(f"   İşleniyor: {i}/{len(context_tensors)}...")
+    print(f"İşleniyor: {i}/{len(context_tensors)}...")
     batch = context_tensors[i:i + batch_size]
 
-    # Sadece bu 32'lik grubu tahmin et
+
     batch_samples = pipeline.predict(batch, prediction_length=horizon, num_samples=20)
     all_forecasts.append(batch_samples)
 
@@ -109,7 +109,7 @@ plt.grid(True, alpha=0.3)
 plt.savefig('results/chronos_forecast_plot.png')
 
 print("="*50)
-print(f"📁 Tüm sonuçlar 'results/' klasörüne kaydedildi.")
-print(f"📊 Ortalama MAE: {metrics_dict['MAE'][0]:.4f}")
-print(f"📉 WAPE: {metrics_dict['WAPE'][0]:.4f}")
+print(f"Tüm sonuçlar 'results/' klasörüne kaydedildi.")
+print(f"Ortalama MAE: {metrics_dict['MAE'][0]:.4f}")
+print(f"WAPE: {metrics_dict['WAPE'][0]:.4f}")
 print("="*50)

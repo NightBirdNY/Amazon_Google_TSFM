@@ -36,11 +36,11 @@ try:
         is_overconfident = empirical_coverage < expected_coverage
 
         print(f"Model: {model_name}")
-        print(f"   - Ampirik Kapsama (Coverage): %{empirical_coverage * 100:.2f} (Hedef: %90)")
-        print(f"   - PCE Skoru: {pce:.4f} (Sıfıra ne kadar yakınsa o kadar iyi)")
-        print(f"   - SIW Skoru: {siw:.4f} (Aralık genişliği)")
+        print(f"- Ampirik Kapsama: %{empirical_coverage * 100:.2f} (Hedef: %90)")
+        print(f"- PCE Skoru: {pce:.4f}")
+        print(f"- SIW Skoru: {siw:.4f}")
         print(
-            f"   - Durum: {'AŞIRI ÖZGÜVENLİ' if is_overconfident else 'GÜVENİLİR (Well-Calibrated) '}\n")
+            f"- Durum: {'AŞIRI ÖZGÜVENLİ' if is_overconfident else 'GÜVENİLİR'}\n")
 
         return pce, siw
 
